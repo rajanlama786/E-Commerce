@@ -8,5 +8,6 @@ public interface ICatalogManager
     Task<CatalogItem> GetCatalogItemByIDAsync(Guid itemID);
 
     Task CatalogItemAddAsync(CatalogItem objCatalogItem);
+    Task CatalogItemUpdateAsync(CatalogItem objCatalogItem);
 }
 

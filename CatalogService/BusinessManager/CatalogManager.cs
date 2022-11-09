@@ -22,5 +22,11 @@ public class CatalogManager : ICatalogManager
         ICatalogDataProvider objcatalogDataProvider = CatalogFactory.Create();
         await objcatalogDataProvider.CatalogItemAddAsync(objCatalogItem);
     }
+
+    public async Task CatalogItemUpdateAsync(CatalogItem objCatalogItem)
+    {
+        ICatalogDataProvider objcatalogDataProvider = CatalogFactory.Create();
+        await objcatalogDataProvider.CatalogItemUpdateAsync(objCatalogItem);
+    }
 }
 

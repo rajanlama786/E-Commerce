@@ -30,11 +30,19 @@ namespace CatalogService.Controllers
         public async Task CatalogItemAddAsync([FromBody] CatalogItem objCatalogItem)
         {
             ICatalogManager catalogManager = CatalogManagerFactory.Create();
+            objCatalogItem.Id = Guid.NewGuid();
             await catalogManager.CatalogItemAddAsync(objCatalogItem);
         }
 
-            // GET api/<CatalogController>/5
-            [HttpGet("{id}")]
+        [HttpPost("CatalogItemUpdateAsync")]
+        public async Task CatalogItemUpdateAsync([FromBody] CatalogItem objCatalogItem)
+        {
+            ICatalogManager catalogManager = CatalogManagerFactory.Create();           
+            await catalogManager.CatalogItemUpdateAsync(objCatalogItem);
+        }
+
+        // GET api/<CatalogController>/5
+        [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
