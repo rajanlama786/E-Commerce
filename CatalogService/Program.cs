@@ -33,6 +33,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
+
 var connectionString = app.Configuration.GetConnectionString("SQLConnection");
 SQLHandlerAsync.Connectionconfig =
     SQLHandler.Connectionconfig =

@@ -20,7 +20,7 @@ namespace CatalogService.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] AppUser _userData)
+        public async Task<IActionResult> Login([FromBody] AppUser? _userData)
         {
             if (_userData != null && _userData.EmailID != null && _userData.Password != null)
             {
@@ -32,7 +32,7 @@ namespace CatalogService.Controllers
                     UserId = 1,
                     UserName = _userData.UserName                    
                 };
-
+                
                 var user = objLogedInUser;// await GetUser(_userData.EmailID, _userData.Password);
 
                 if (user != null)

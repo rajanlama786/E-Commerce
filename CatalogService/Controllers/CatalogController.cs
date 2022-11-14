@@ -1,7 +1,13 @@
 ﻿using CatalogService.BusinessManager;
 using CommonEnitity.Catalog;
+using CommonEnitity.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,6 +17,8 @@ namespace CatalogService.Controllers
     [ApiController]
     public class CatalogController : ControllerBase
     {
+
+        [Authorize]
         // GET: api/<CatalogController>
         [HttpPost("GetCatalogItemListAsync")]
         public async Task<IEnumerable<CatalogItem>> GetCatalogItemListAsync()
