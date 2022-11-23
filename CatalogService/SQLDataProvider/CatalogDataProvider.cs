@@ -98,5 +98,23 @@ public class CatalogDataProvider: ICatalogDataProvider
             throw;
         }
     }
+
+    public async Task CatalogItemDeleteAsync(CatalogItem objCatalogItem)
+    {
+        List<SQLParam> sParam = new List<SQLParam>
+        {
+            new SQLParam("@Id", objCatalogItem.Id)
+        };
+        SQLExecuteNonQueryAsync objSQLH = new SQLExecuteNonQueryAsync();
+        string spName = objSQLH.GetFullSpName("uspCatalogItemDelete");
+        try
+        {
+            await objSQLH.ExecuteNonQueryAsync(spName, sParam);
+        }
+        catch
+        {
+            throw;
+        }
+    }
 }
 

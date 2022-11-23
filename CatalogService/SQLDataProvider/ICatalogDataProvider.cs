@@ -10,5 +10,7 @@ public interface ICatalogDataProvider
     Task CatalogItemAddAsync(CatalogItem objCatalogItem);
 
     Task CatalogItemUpdateAsync(CatalogItem objCatalogItem);
+
+    Task CatalogItemDeleteAsync(CatalogItem objCatalogItem);
 }
 

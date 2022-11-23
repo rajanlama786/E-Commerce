@@ -49,6 +49,13 @@ namespace CatalogService.Controllers
             await catalogManager.CatalogItemUpdateAsync(objCatalogItem);
         }
 
+        [HttpPost("CatalogItemDeleteAsync")]
+        public async Task CatalogItemDeleteAsync([FromBody] CatalogItem objCatalogItem)
+        {
+            ICatalogManager catalogManager = CatalogManagerFactory.Delete();
+            await catalogManager.CatalogItemDeleteAsync(objCatalogItem);
+        }
+
         // GET api/<CatalogController>/5
         [HttpGet("{id}")]
         public string Get(int id)
