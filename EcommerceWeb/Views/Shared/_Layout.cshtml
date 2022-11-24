@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using WebEcommerce.Models.Helper
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,9 +28,21 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+                @{
+                    CookieHelper cHelper = new CookieHelper(new HttpContextAccessor());                    
+                    if (string.IsNullOrEmpty(cHelper.getTokenCookie()))
+                    {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Logout</a>
+                    }
+                }
+            </div>           
         </nav>
-    </header>
+        
+            </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

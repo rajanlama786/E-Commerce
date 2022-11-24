@@ -11,5 +11,10 @@ namespace WebEcommerce.Controllers
     {
         private readonly SignInManager<AppUser> _signInManager;
         //private readonly IApiClient _apiClient;
+        //public IActionResult Login()
+        //{
+        //    AppUser user = new AppUser();
+        //    return View(user);
+        //}
     }
 }
