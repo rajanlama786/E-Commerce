@@ -27,11 +27,12 @@ namespace CatalogService.Controllers
             return await catalogManager.GetCatalogItemListAsyc();
         }
 
+
         [HttpPost("GetCatalogItemAsync")]
-        public Task<CatalogItem> GetCatalogItemAsync(Guid CatalogItemID)
+        public async Task<CatalogItem> GetCatalogItemAsync(Guid CatalogItemID)
         {
             ICatalogManager catalogManager = CatalogManagerFactory.Create();
-            return catalogManager.GetCatalogItemByIDAsync(CatalogItemID);
+            return await catalogManager.GetCatalogItemByIDAsync(CatalogItemID);
         }
 
         [HttpPost("CatalogItemAddAsync")]
