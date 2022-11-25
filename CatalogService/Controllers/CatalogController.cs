@@ -52,7 +52,7 @@ namespace CatalogService.Controllers
         [HttpPost("CatalogItemDeleteAsync")]
         public async Task CatalogItemDeleteAsync([FromBody] CatalogItem objCatalogItem)
         {
-            ICatalogManager catalogManager = CatalogManagerFactory.Delete();
+            ICatalogManager catalogManager = CatalogManagerFactory.Create();
             await catalogManager.CatalogItemDeleteAsync(objCatalogItem);
         }
 

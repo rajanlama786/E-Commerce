@@ -9,5 +9,6 @@ public interface ICatalogManager
 
     Task CatalogItemAddAsync(CatalogItem objCatalogItem);
     Task CatalogItemUpdateAsync(CatalogItem objCatalogItem);
+    Task CatalogItemDeleteAsync(CatalogItem objCatalogItem);
 }
 

@@ -1,0 +1,12 @@
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.csproj.AssemblyReference.cache
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.GeneratedMSBuildEditorConfig.editorconfig
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.AssemblyInfoInputs.cache
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.AssemblyInfo.cs
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.csproj.CoreCompileInputs.cache
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\bin\Debug\net7.0\Data.SQLHelper.deps.json
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\bin\Debug\net7.0\Data.SQLHelper.dll
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\bin\Debug\net7.0\Data.SQLHelper.pdb
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.dll
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\refint\Data.SQLHelper.dll
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\Data.SQLHelper.pdb
+F:\dotnet-Projects\E-Commerce\Data.SQLHelper\obj\Debug\net7.0\ref\Data.SQLHelper.dll

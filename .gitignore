@@ -1,0 +1,5 @@
+build/
+*/debug/
+node_modules/
+package-lock.json
+EcommerceWeb/obj/Debug/

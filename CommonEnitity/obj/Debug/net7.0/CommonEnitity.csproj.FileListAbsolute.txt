@@ -1,0 +1,12 @@
+F:\dotnet-Projects\E-Commerce\CommonEnitity\bin\Debug\net7.0\CommonEnitity.deps.json
+F:\dotnet-Projects\E-Commerce\CommonEnitity\bin\Debug\net7.0\CommonEnitity.dll
+F:\dotnet-Projects\E-Commerce\CommonEnitity\bin\Debug\net7.0\CommonEnitity.pdb
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.csproj.AssemblyReference.cache
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.GeneratedMSBuildEditorConfig.editorconfig
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.AssemblyInfoInputs.cache
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.AssemblyInfo.cs
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.csproj.CoreCompileInputs.cache
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.dll
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\refint\CommonEnitity.dll
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\CommonEnitity.pdb
+F:\dotnet-Projects\E-Commerce\CommonEnitity\obj\Debug\net7.0\ref\CommonEnitity.dll

@@ -28,5 +28,11 @@ public class CatalogManager : ICatalogManager
         ICatalogDataProvider objcatalogDataProvider = CatalogFactory.Create();
         await objcatalogDataProvider.CatalogItemUpdateAsync(objCatalogItem);
     }
+
+    public async Task CatalogItemDeleteAsync(CatalogItem objCatalogItem)
+    {
+        ICatalogDataProvider objcatalogDataProvider = CatalogFactory.Create();
+        await objcatalogDataProvider.CatalogItemDeleteAsync(objCatalogItem);
+    }
 }
 
