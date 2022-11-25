@@ -1,8 +1,20 @@
+using WebEcommerce.Models.ApiHelper;
+using WebEcommerce.Models.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//builder.Services.AddHttpClient<>
+string? baseAddress = builder.Configuration["APIBase:BaseUrle"];
+builder.Services.AddHttpClient("Catalog", config =>
+{
+    config.BaseAddress = new Uri(baseAddress);
+    config.Timeout = new TimeSpan(0, 0, 30);
+    config.DefaultRequestHeaders.Clear();
+});
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

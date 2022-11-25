@@ -10,6 +10,9 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography.X509Certificates;
 using CommonEnitity.Users;
 using System.Xml.Linq;
+using WebEcommerce.Models.ApiHelper;
+using WebEcommerce.Models.Interfaces;
+using CommonEnitity.DTOS;
 
 namespace WebEcommerce.Controllers
 {
@@ -18,92 +21,61 @@ namespace WebEcommerce.Controllers
         private readonly ILogger<HomeController> _logger;
         public IConfiguration _configuration;
         private string ApiBaseUrl = string.Empty;
+        private readonly HttpClient _httpClient;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration)
+        private readonly ApiClientFactory _clientFactory;
+
+        public HomeController(ILogger<HomeController> logger, 
+            IConfiguration configuration, 
+            IHttpContextAccessor httpContextAccessor,
+            IHttpClientFactory httpClient)
         {
             _logger = logger;
             _configuration = configuration;
-            ApiBaseUrl = _configuration["APIBase:BaseUrle"];
+            _httpContextAccessor = httpContextAccessor;
+            _clientFactory = new ApiClientFactory(httpClient, "Catalog");
+            //ApiBaseUrl = _configuration["APIBase:BaseUrle"];
+            //_httpClient = new()
+            //{
+            //    BaseAddress = new Uri(ApiBaseUrl)
+            //};
+
         }
 
         //string jwt = "";//Request.Cookies["jwtCookie"];
         public async Task<string> GetToken(AppUser userData)
         {
-            string jwt = string.Empty;            
-            string strAPIUrl = $"{ApiBaseUrl}Token/Login";
-            using (var httpClient = new HttpClient())
+            string jwt = string.Empty;
+            string strAPIUrl = $"Token/Login";
+
+            using (var response = await
+                _httpClient.PostAsJsonAsync<AppUser>(strAPIUrl, userData))
             {
-                using (var response = await
-                    httpClient.PostAsJsonAsync<AppUser>(strAPIUrl, userData))
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        jwt = apiResponse;
-                    }
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    jwt = apiResponse;
                 }
             }
+
             return jwt;
         }
         public async Task<IActionResult> Index()
         {
-            
-            AppUser userData = new AppUser();
-            userData.EmailID = "alokgo@gmail.com";
-            userData.UserName = "alokgo@gmail.com";
-            userData.Password = "alokpandey";
-            userData.DisplayName = "Alok Pandey";
-            userData.AddedOn = DateTime.Now;
-            userData.UserId = 1;
-            
-
-            string jwt = await GetToken(userData);
-            StringContent content = new
-                StringContent(JsonSerializer.Serialize(string.Empty),
-                Encoding.UTF8, "text/plain");
-            string strAPIUrl = $"{ApiBaseUrl}Catalog/GetCatalogItemListAsync";
-
-            using (var httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Authorization
-                    = new AuthenticationHeaderValue("Bearer", jwt);
-                using (var response = await
-                    httpClient.PostAsJsonAsync(strAPIUrl, content))
-                {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        IEnumerable<CatalogItem> objList =
-                            JsonSerializer.Deserialize<IEnumerable<CatalogItem>>(apiResponse);
-                        return View(objList);
-                    }
-                }
-            }
             return View();
         }
 
         public async Task<IActionResult> GetList()
         {
-            string apiUrl = "https://localhost:7264/api/Token/";
-            AppUser userData = new AppUser();
-            userData.UserName = "alokgo@gmail.com";
-            userData.Password = "alokpandey";
-            userData.DisplayName = "Alok Pandey";
-            userData.AddedOn = DateTime.Now;
-            userData.UserId = 1;
-            using (HttpClient httpClient = new HttpClient()) 
-            {
-                httpClient.BaseAddress = new Uri(apiUrl);
-                using (HttpResponseMessage response =
-                    await httpClient.PostAsJsonAsync<AppUser>("Login", userData))
-                {
-                    if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                    }
-                }
-            }
-            return View();
+            string strAPIUrl = $"Catalog/GetCatalogItemListAsync";
+            StringContent content = new
+                StringContent(JsonSerializer.Serialize(string.Empty),
+                Encoding.UTF8, "text/plain");
+            var objList = await
+                _clientFactory.PostListAsync<CatalogItem>(strAPIUrl, content);
+            return View(objList);
+            
         }
 
         public IActionResult Privacy()
