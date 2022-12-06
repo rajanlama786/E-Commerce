@@ -1,0 +1,31 @@
+﻿@model IEnumerable<CommonEnitity.Catalog.CatalogItem>
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="text-center">
+    <h1 class="display-4">Detail Page.</h1>
+    <h2>We will add soon many things</h2>
+    <h2>We are adding UI Soon</h2>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

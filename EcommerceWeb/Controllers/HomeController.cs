@@ -78,6 +78,19 @@ namespace WebEcommerce.Controllers
             
         }
 
+        //[HttpGet("{id}")]
+        public async Task<IActionResult> DeleteItem( string id)
+        {
+            string strAPIUrl = $"Catalog/CatalogItemDeleteAsync";
+            StringContent content = new
+                StringContent(JsonSerializer.Serialize(id),
+                Encoding.UTF8, "text/plain");
+            var objList = await
+                _clientFactory.PostListAsync<CatalogItem>(strAPIUrl, content);
+            //return View(objList);
+            return RedirectToAction("GetList", "Home");
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -88,5 +101,12 @@ namespace WebEcommerce.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+
     }
 }
